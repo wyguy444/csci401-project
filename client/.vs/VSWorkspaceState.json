@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\scenes",
+    "\\src\\scenes\\register",
+    "\\src\\scenes\\student"
+  ],
+  "SelectedNode": "\\src\\scenes\\student\\StudentNavigation.tsx",
+  "PreviewInSolutionExplorer": false
+}

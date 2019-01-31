@@ -14,10 +14,10 @@ public class PlatformApplication {
 		final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
 		registrationBean.setFilter(new JwtFilter());
 		registrationBean.addUrlPatterns("/users");
-		
+
 		return registrationBean;
 	}
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(PlatformApplication.class, args);
 	}
