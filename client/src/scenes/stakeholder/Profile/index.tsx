@@ -109,7 +109,7 @@ class StakeholderProfile extends React.Component<ProfileProps, ProfileState> {
                         <FormControl 
                             type="text" 
                             id="name"
-                            value={this.state.user.firstName}
+                            defaultValue={this.state.user.firstName}
                             onChange={e => this.handleChange(e)} 
                         />
                     </Col>             
@@ -123,7 +123,7 @@ class StakeholderProfile extends React.Component<ProfileProps, ProfileState> {
                         <FormControl 
                             type="email" 
                             id="email"
-                            value={this.state.user.email} 
+                            defaultValue={this.state.user.email} 
                             onChange={e => this.handleChange(e)}  
                         />
                     </Col>             
@@ -137,7 +137,7 @@ class StakeholderProfile extends React.Component<ProfileProps, ProfileState> {
                         <FormControl 
                             type="text"
                             id="company" 
-                            value={this.state.user.organization}
+                            defaultValue={this.state.user.organization}
                             onChange={e => this.handleChange(e)} 
                         />
                     </Col>             
@@ -151,7 +151,7 @@ class StakeholderProfile extends React.Component<ProfileProps, ProfileState> {
                         <FormControl 
                                 type="tel" 
                                 id="phone"
-                                value={this.state.user.phone}
+                                defaultValue={this.state.user.phone}
                                 onChange={e => this.handleChange(e)} 
                         />                    
                     </Col>             

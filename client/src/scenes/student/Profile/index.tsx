@@ -90,7 +90,7 @@ class StudentProfile extends React.Component<ProfileProps, ProfileState> {
                         <FormControl 
                             type="text" 
                             id="name"
-                            value={this.state.user.firstName}
+                            defaultValue={this.state.user.firstName}
                             onChange={e => this.handleChange(e)} 
                         />
                     </Col>             
@@ -104,7 +104,7 @@ class StudentProfile extends React.Component<ProfileProps, ProfileState> {
                         <FormControl 
                             type="email" 
                             id="email"
-                            value={this.state.user.email} 
+                            defaultValue={this.state.user.email} 
                             onChange={e => this.handleChange(e)} 
                         />
                     </Col>             
@@ -118,12 +118,11 @@ class StudentProfile extends React.Component<ProfileProps, ProfileState> {
                         <FormControl 
                             type="tel" 
                             id="phone"
-                            value={this.state.user.phone}
+                            defaultValue={this.state.user.phone}
                             onChange={e => this.handleChange(e)} 
                         />
                     </Col>             
                 </FormGroup> 
-                
                 <FormGroup>
                     <Col smOffset={2} sm={10}>
                         <Button type="submit" bsStyle="primary" onClick={this.submitClicked}>Edit/Save Profile</Button>
