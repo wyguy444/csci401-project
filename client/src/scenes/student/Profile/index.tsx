@@ -49,22 +49,20 @@ class StudentProfile extends React.Component<ProfileProps, ProfileState> {
         
     }
     submitClicked() {
-   /*     var request = new XMLHttpRequest();
+        var request = new XMLHttpRequest();
         request.withCredentials = true;
-        request.open('POST', 'http://localhost:8080//');
+        request.open('POST', 'http://localhost:8080/users/update-info');
         request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
         var data = JSON.stringify({
-            fullName: this.state.name,
-            email: this.state.email,
-            phone: this.state.phone
+            firstName: this.state.user.firstName,
+            email: this.state.user.email,
+            phone: this.state.user.phone
         });
         request.setRequestHeader('Cache-Control', 'no-cache');
         request.send(data);
-        alert(request.responseText + 'Logging you in...');
         request.onreadystatechange = function() {
-            if (request.readyState === 4) {
-            }
-        }; */
+            window.location.href = '/student/profile';
+        }; 
     }
     handleChange(e: any) {
         this.setState({ [e.target.id]: e.target.value });
