@@ -86,16 +86,22 @@ public class UserController
 	@PostMapping("/update-info")
 	@CrossOrigin(origins = "http://localhost:3000")
 	public void updateUserInfo(@RequestBody Map<String, String> info) {
-		String originalEmail = info.get(Constants.ORIGINAL_EMAIL);
-		String newEmail = info.get(Constants.EMAIL);
+		String originalEmail = info.get(Constants.EMAIL);
+		String phone = info.get(Constants.PHONE);
+		String password = info.get(Constants.PASSWORD);
 		String firstName = info.get(Constants.FIRST_NAME);
-		String lastName = info.get(Constants.LAST_NAME);
 		String userType = info.get(Constants.USER_TYPE);
 		
 		User user = findUser(originalEmail);
-		user.setFirstName(firstName);
-		user.setLastName(lastName);
-		user.setEmail(newEmail);
+		if(!firstName.isEmpty()) {
+			user.setFirstName(firstName);
+		}
+		if(!phone.isEmpty()) {
+			user.setPhone(phone);
+		}
+		if(!password.isEmpty()) {
+			user.setPassword(EncryptPassword.encryptPassword(password));
+		}
 		user.setUserType(userType);
 		userService.saveUser(user);
 	}

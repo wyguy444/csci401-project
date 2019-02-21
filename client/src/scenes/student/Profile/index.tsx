@@ -20,8 +20,13 @@ interface User {
     firstName: string;
     email: string;
     phone: string;
+    password: string;
 }
 interface ProfileState {
+    nfirstName: string;
+    nNumber: string;
+    nPassword: string;
+    nConfirm: string;
     user: User;
     isLoading: boolean;
 }
@@ -31,10 +36,15 @@ class StudentProfile extends React.Component<ProfileProps, ProfileState> {
     constructor(props: ProfileProps) {
         super(props);
         this.state = {
+            nfirstName: '',
+            nNumber: '',
+            nPassword: '',
+            nConfirm: '',
             user: {
             firstName: '',
             email: '',
-            phone: ''},
+            phone: '',
+            password: ''},
             isLoading: false,
         };
         this.submitClicked = this.submitClicked.bind(this);
@@ -46,6 +56,8 @@ class StudentProfile extends React.Component<ProfileProps, ProfileState> {
         fetch('http://localhost:8080/users/' + sessionStorage.getItem('email'))
         .then(response => response.json())
         .then(data => this.setState({user: data, isLoading: false}));
+        this.setState({nfirstName: this.state.user.firstName});
+        this.setState({ nfirstName: this.state.user.phone });
         
     }
     submitClicked() {
@@ -54,9 +66,10 @@ class StudentProfile extends React.Component<ProfileProps, ProfileState> {
         request.open('POST', 'http://localhost:8080/users/update-info');
         request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
         var data = JSON.stringify({
-            firstName: this.state.user.firstName,
+            firstName: this.state.nfirstName,
             email: this.state.user.email,
-            phone: this.state.user.phone
+            phone: this.state.nNumber,
+            password: this.state.nPassword
         });
         request.setRequestHeader('Cache-Control', 'no-cache');
         request.send(data);
@@ -87,7 +100,7 @@ class StudentProfile extends React.Component<ProfileProps, ProfileState> {
                     <Col sm={10}>
                         <FormControl 
                             type="text" 
-                            id="name"
+                            id="nfirstName"
                             defaultValue={this.state.user.firstName}
                             onChange={e => this.handleChange(e)} 
                         />
@@ -115,12 +128,38 @@ class StudentProfile extends React.Component<ProfileProps, ProfileState> {
                     <Col sm={10}>
                         <FormControl 
                             type="tel" 
-                            id="phone"
+                            id="nNumber"
                             defaultValue={this.state.user.phone}
                             onChange={e => this.handleChange(e)} 
                         />
                     </Col>             
                 </FormGroup> 
+
+                <FormGroup controlId="formHorizontalStudentName">
+                    <Col componentClass={ControlLabel} sm={2}>
+                        New Password:
+                    </Col>
+                    <Col sm={10}>
+                        <FormControl 
+                            type="password" 
+                            id="nPassword"
+                            onChange={e => this.handleChange(e)} 
+                        />
+                    </Col>             
+                </FormGroup>
+
+                <FormGroup controlId="formHorizontalStudentName">
+                    <Col componentClass={ControlLabel} sm={2}>
+                        Confirm Password:
+                    </Col>
+                    <Col sm={10}>
+                        <FormControl 
+                            type="password" 
+                            id="nConfirm"
+                            onChange={e => this.handleChange(e)} 
+                        />
+                    </Col>             
+                </FormGroup>
                 <FormGroup>
                     <Col smOffset={2} sm={10}>
                         <Button type="submit" bsStyle="primary" onClick={this.submitClicked}>Edit/Save Profile</Button>
